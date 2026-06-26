@@ -1,8 +1,3 @@
---[[
-	rawr.xyz SaveManager
-	Based on Linoria-style save manager
-	Version: 1.0.0
-]]
 
 local HttpService = game:GetService('HttpService')
 

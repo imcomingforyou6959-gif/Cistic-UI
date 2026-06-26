@@ -7,25 +7,25 @@ local CoreGui = game:GetService("CoreGui")
 local TweenService = game:GetService("TweenService")
 local RunService = game:GetService("RunService")
 
--- Configuration
+-- Configuration (Midnight Theme)
 local Config = {
 	Theme = {
-		Text = Color3.fromRGB(200, 190, 195),
-		TextDark = Color3.fromRGB(140, 130, 135),
-		TextLight = Color3.fromRGB(230, 220, 225),
-		Accent = Color3.fromRGB(200, 100, 130),
-		AccentDark = Color3.fromRGB(180, 80, 110),
-		AccentLight = Color3.fromRGB(220, 140, 160),
-		Background = Color3.fromRGB(25, 18, 20),
-		BackgroundLight = Color3.fromRGB(40, 30, 35),
-		BackgroundDark = Color3.fromRGB(15, 10, 12),
-		Border = Color3.fromRGB(60, 50, 55),
-		BorderLight = Color3.fromRGB(80, 70, 75),
+		Text = Color3.fromRGB(200, 190, 195),        -- hsl(348, 30%, 75%)
+		TextDark = Color3.fromRGB(140, 130, 135),     -- hsl(348, 15%, 40%)
+		TextLight = Color3.fromRGB(230, 220, 225),    -- hsl(348, 45%, 85%)
+		Accent = Color3.fromRGB(200, 100, 130),       -- hsl(348, 65%, 60%)
+		AccentDark = Color3.fromRGB(180, 80, 110),    -- hsl(348, 55%, 50%)
+		AccentLight = Color3.fromRGB(220, 140, 160),  -- hsl(348, 70%, 65%)
+		Background = Color3.fromRGB(25, 18, 20),      -- hsla(348, 25%, 7%, 0.5)
+		BackgroundLight = Color3.fromRGB(40, 30, 35), -- hsla(348, 25%, 10%, 0.5)
+		BackgroundDark = Color3.fromRGB(15, 10, 12),  -- hsla(348, 25%, 7%, 0.5)
+		Border = Color3.fromRGB(60, 50, 55),          -- rgba(255, 255, 255, 0.08)
+		BorderLight = Color3.fromRGB(80, 70, 75),     -- rgba(255, 255, 255, 0.15)
 		Shadow = Color3.fromRGB(0, 0, 0),
-		Online = Color3.fromRGB(64, 162, 88),
-		Idle = Color3.fromRGB(204, 149, 76),
-		DND = Color3.fromRGB(216, 58, 65),
-		Offline = Color3.fromRGB(130, 130, 140),
+		Online = Color3.fromRGB(64, 162, 88),         -- #40a258
+		Idle = Color3.fromRGB(204, 149, 76),          -- #cc954c
+		DND = Color3.fromRGB(216, 58, 65),            -- #d83a41
+		Offline = Color3.fromRGB(130, 130, 140),      -- hsl(348, 15%, 35%)
 	},
 	Font = Enum.Font.Gotham,
 	FontBold = Enum.Font.GothamBold,
@@ -201,11 +201,11 @@ function Library:CreateWindow(options)
 		Parent = TopBar
 	})
 	
-	-- Close Button
+	-- Close Button (Red Dot)
 	local CloseBtn = Create("TextButton", {
 		Name = "CloseBtn",
-		Size = UDim2.new(0, 20, 0, 20),
-		Position = UDim2.new(1, -20, 0.5, -10),
+		Size = UDim2.new(0, 14, 0, 14),
+		Position = UDim2.new(1, -20, 0.5, 0),
 		AnchorPoint = Vector2.new(1, 0.5),
 		BackgroundTransparency = 1,
 		Text = "",
@@ -232,11 +232,11 @@ function Library:CreateWindow(options)
 		Library:Close()
 	end)
 	
-	-- Minimize Button
+	-- Minimize Button (Yellow Dot)
 	local MinBtn = Create("TextButton", {
 		Name = "MinBtn",
-		Size = UDim2.new(0, 20, 0, 20),
-		Position = UDim2.new(1, -50, 0.5, -10),
+		Size = UDim2.new(0, 14, 0, 14),
+		Position = UDim2.new(1, -42, 0.5, 0),
 		AnchorPoint = Vector2.new(1, 0.5),
 		BackgroundTransparency = 1,
 		Text = "",
@@ -308,6 +308,11 @@ function Library:CreateWindow(options)
 		CurrentTab = nil
 	}
 	
+	-- ============================================================
+	-- FIX: Define AddTab BEFORE creating the Home tab
+	-- ============================================================
+	
+	-- Tab Creation (defined on Window object)
 	function Window:AddTab(name)
 		local tab = {}
 		
